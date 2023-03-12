@@ -3,7 +3,13 @@
         - add support for lag to check all values between record and lag # (not just record vs. lag # value)
         - add support for time-based (instead of record count-based) staleness
 #}
+
 {% macro flag_stale(target_col, datetime_col, partition_by_cols, exclude_values=[], lag_length=1, quote=false) %}
+    {{ return(adapter.dispatch('flag_stale', 'entr')(target_col, datetime_col, partition_by_cols, exclude_values, lag_length, quote)) }}
+{% endmacro %}
+
+{% macro default__flag_stale(target_col, datetime_col, partition_by_cols, exclude_values=[], lag_length=1, quote=false) %}
+
     {% if quote==true %}
         {% set _target_col = adapter.quote(target_col) %}
         {% set _datetime_col = adapter.quote(target_col) %}

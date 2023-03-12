@@ -1,4 +1,8 @@
 {% macro flag_min_violation(target_col, min, where, inclusive=false, quote=false) %}
+    {{ return(adapter.dispatch('flag_min_violation', 'entr')(target_col, min, where, inclusive, quote)) }}
+{% endmacro %}
+
+{% macro default__flag_min_violation(target_col, min, where, inclusive=false, quote=false) %}
 
     {% if quote==true %}
         {% set _target_col = adapter.quote(target_col) %}

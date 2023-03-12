@@ -3,7 +3,11 @@
 {% endmacro %}
 
 {# TODO: refactor how columns get called - make dynamic based on relation #}
-{% macro entr_reanalysis_wind_direction_from_components(source_table=ref('fct_entr_reanalysis_data')) %}
+{% macro reanalysis_wind_direction_from_components(source_table=ref('fct_entr_reanalysis_data')) %}
+    {{ return(adapter.dispatch('reanalysis_wind_direction_from_components', 'entr')(source_table)) }}
+{% endmacro %}
+
+{% macro default__entr_reanalysis_wind_direction_from_components(source_table=ref('fct_entr_reanalysis_data')) %}
     select
         2559 as entr_tag_id, -- WMETR.HORWdDir
         plant_id,

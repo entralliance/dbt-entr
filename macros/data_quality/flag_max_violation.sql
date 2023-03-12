@@ -1,4 +1,8 @@
 {% macro flag_max_violation(target_col, max, where, inclusive=false, quote=false) %}
+    {{ return(adapter.dispatch('flag_max_violation', 'entr')(target_col, max, where, inclusive, quote)) }}
+{% endmacro %}
+
+{% macro default__flag_max_violation(target_col, max, where, inclusive=false, quote=false) %}
 
     {% if quote==true %}
         {% set _target_col = adapter.quote(target_col) %}

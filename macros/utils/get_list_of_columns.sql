@@ -1,3 +1,11 @@
+{#
+    TODO:
+        - rename macro
+        - rename quote to quote_identifiers (consistent with dbt_utils.star)
+        - audit case sensitivity to make sure it won't be a problem
+        - allow prefix/suffix
+    Adapted from dbt_utils.star
+#}
 {% macro get_list_of_columns(from, except=[], quote=false) -%}
     {%- do dbt_utils._is_relation(from, 'star') -%}
     {%- do dbt_utils._is_ephemeral(from, 'star') -%}

@@ -1,3 +1,6 @@
+{#
+    TODO: refactor/rethink how we're handling unit conversions at scale
+#}
 {% macro entr_single_tag_unit_conversion(relation_for_table_structure, entr_tag_id, operation, new_units, cte=relation_for_table_structure, where='1=1') %}
 
     {% set columns = get_list_of_columns(from=relation_for_table_structure) %}

@@ -1,4 +1,14 @@
-{% macro get_period(interval_s, output_col='interval_period') %}
+{#
+    TODO:
+        - rename to "get_time_period"
+        - potentially leverage a seeded dimension
+#}
+
+{% macro get_period(interval_s, output_col='interval_period') -%}
+    {{ return(adapter.dispatch('get_period', 'dbt_utils')(interval_s, output_col)) }}
+{% endmacro %}
+
+{% macro default__get_period(interval_s, output_col='interval_period') %}
     case
         when {{interval_s}} < 60 then 'second'
         when {{interval_s}} > 60 and {{interval_s}} < 3600 and mod({{interval_s}},60) = 0 then 'minute'
