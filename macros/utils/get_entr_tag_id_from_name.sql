@@ -14,6 +14,6 @@
 
     {%- set tag = dbt_utils.get_single_value(sql_statement) -%}
     
-    {% do return(tag.get('ENTR_TAG_ID')[0]) %}
+    {% do return(tag) %}
 
 {% endmacro %}
