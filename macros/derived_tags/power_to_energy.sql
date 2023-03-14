@@ -15,8 +15,8 @@
         {{w_to_wh(power='tag_value', interval_s='interval_s')}} as tag_value,
         interval_s,
         'derived' as value_type,
-        {{dbt_utils.concat(['value_units', "'h'"])}} value_units,
-        {{dbt_utils.concat(['standard_units', "'h'"])}} standard_units
+        {{dbt.concat(['value_units', "'h'"])}} value_units,
+        {{dbt.concat(['standard_units', "'h'"])}} standard_units
     from {{source_table}}
     where entr_tag_id = 2456
 {% endmacro %}
