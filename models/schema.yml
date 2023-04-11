@@ -1,6 +1,9 @@
 version: 2
 
 models:
+  - name: fct_entr_time_series
+    description: generic ENTR fact table containing time series data
+
   - name: dim_entr_asset
     description: main asset dimension for the ENTR warehouse
     tests:
