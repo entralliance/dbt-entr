@@ -30,6 +30,4 @@ vars:
   dim_asset_wind_plant_models: ['int_dim_asset_wind_plant__structured']
   dim_asset_wind_turbine_models: ['int_dim_asset_wind_turbine__structured']
   dim_entr_tag_list_models: ['int_dim_entr_tag_list__structured', 'seed_entr_tag_list']
-  fct_entr_plant_models: ['int_fct_entr_plant_data__structured']
-  fct_entr_wtg_scada_models: ['int_fct_entr_wtg_scada__structured']
-  fct_entr_reanalysis_models: ['int_fct_entr_reanalysis_data__structured']
+  fct_entr_time_series_models: ['int_fct_entr_time_series__structured']

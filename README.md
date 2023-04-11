@@ -10,9 +10,7 @@ vars:
         dim_asset_reanalysis_dataset_models: [<list of models to be ingested by the dim_asset_reanalysis_dataset dimensional model from this package>]
         dim_asset_wind_plant_models: [<list of models to be ingested by the dim_asset_wind_plant dimensional model from this package>]
         dim_asset_wind_turbine_models: [<list of models to be ingested by the dim_asset_wind_turbine dimensional model from this package>]
-        fct_entr_plant_models: [<list of models to be ingested by the fct_entr_plant_data fact model from this package>]
-        fct_entr_wtg_scada_models: [<list of models to be ingested by the fct_entr_wtg_scada fact model from this package>]
-        fct_entr_reanalysis_models: [<list of models to be ingested by the fct_entr_reanalysis_data fact model from this package>]
+        fct_entr_time_series_models: [<list of models to be ingested by the fct_entr_reanalysis_data fact model from this package>]
 ```
 
 You may also want to override the default column types in the ENTR models by passing a dictionary of column names with the desired data types to override to:
