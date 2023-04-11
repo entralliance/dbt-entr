@@ -9,11 +9,11 @@
 {% macro default__get_entr_tag_id_from_name(entr_tag_name) %}
 
     {% set sql_statement -%}
-        select entr_tag_id as {{adapter.quote('ENTR_TAG_ID'|upper)}} from {{ ref('dim_entr_tag_list') }} where entr_tag_name = '{{entr_tag_name}}'
+        select entr_tag_id from {{ ref('dim_entr_tag_list') }} where entr_tag_name = '{{entr_tag_name}}'
     {%- endset %}
 
-    {%- set tag = dbt_utils.get_query_results_as_dict(sql_statement) -%}
+    {%- set tag = dbt_utils.get_single_value(sql_statement) -%}
     
-    {% do return(tag.get('ENTR_TAG_ID')[0]) %}
+    {% do return(tag) %}
 
 {% endmacro %}
