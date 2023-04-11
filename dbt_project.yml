@@ -26,8 +26,6 @@ seeds:
       +enabled: false
 
 vars:
-  dim_asset_reanalysis_dataset_models: ['int_dim_asset_reanalysis_dataset__structured']
-  dim_asset_wind_plant_models: ['int_dim_asset_wind_plant__structured']
-  dim_asset_wind_turbine_models: ['int_dim_asset_wind_turbine__structured']
+  dim_entr_asset_models: ['int_dim_entr_asset__structured']
   dim_entr_tag_list_models: ['int_dim_entr_tag_list__structured', 'seed_entr_tag_list']
   fct_entr_time_series_models: ['int_fct_entr_time_series__structured']

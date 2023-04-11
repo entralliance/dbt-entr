@@ -7,9 +7,7 @@ The following project-level variables should be set in your `dbt_project.yml` to
 ```yml
 vars:
     entr:
-        dim_asset_reanalysis_dataset_models: [<list of models to be ingested by the dim_asset_reanalysis_dataset dimensional model from this package>]
-        dim_asset_wind_plant_models: [<list of models to be ingested by the dim_asset_wind_plant dimensional model from this package>]
-        dim_asset_wind_turbine_models: [<list of models to be ingested by the dim_asset_wind_turbine dimensional model from this package>]
+        dim_entr_asset_models: [<list of models to be ingested by the dim_entr_asset dimensional model from this package>]
         fct_entr_time_series_models: [<list of models to be ingested by the fct_entr_reanalysis_data fact model from this package>]
 ```
 
