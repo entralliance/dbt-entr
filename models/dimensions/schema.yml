@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: dim_entr_asset
+    description: main asset dimension for the ENTR warehouse
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - asset_id
+    columns:
+      - name: asset_id
+        description: surrogate key for the asset expressed as an integer
+        tests:
+          - not_null
+      - name: asset_type
+        description: the descriptive type of the asset
+        tests:
+          - not_null
+      - name: asset_name
+        description: the familiar name of the asset
+        tests:
+          - not_null
+
+  - name: dim_entr_tag_list
+    description: tag dimension for the ENTR warehouse
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - entr_tag_id
