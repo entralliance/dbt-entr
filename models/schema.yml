@@ -3,6 +3,45 @@ version: 2
 models:
   - name: fct_entr_time_series
     description: generic ENTR fact table containing time series data
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - _dbt_source_relation
+            - asset_id
+            - entr_tag_id
+            - tag_subtype_id
+            - date_time
+            - interval_s
+            - value_type
+    columns:
+      - name: _dbt_source_relation
+        description: the fully-qualified name of the database table/view from which the record was sourced
+        tests:
+          - not_null
+      - name: asset_id
+        description: surrogate key for the asset expressed as an integer
+        tests:
+          - not_null
+      - name: entr_tag_id
+        description: surrogate key for the ENTR standard tag expressed as an integer
+        tests:
+          - not_null
+      - name: tag_subtype_id
+        description: surrogate key for sub-type of the ENTR standard tag expressed as an integer
+        tests:
+          - not_null
+      - name: date_time
+        description: the timestamp of the record
+        tests:
+          - not_null
+      - name: interval_s
+        description: the number of seconds following the timestamp for which a record is valid - values of 0 in this column should indicate instantaneous records
+        tests:
+          - not_null
+      - name: value_type
+        description: the descriptive type of record indicating the aggregation type for the value
+        tests:
+          - not_null
 
   - name: dim_entr_asset
     description: main asset dimension for the ENTR warehouse
