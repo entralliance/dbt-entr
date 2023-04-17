@@ -30,3 +30,4 @@ models:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
             - entr_tag_id
+            - tag_subtype_id

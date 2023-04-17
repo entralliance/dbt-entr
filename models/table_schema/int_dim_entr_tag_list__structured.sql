@@ -4,7 +4,9 @@ with dummy_cte as (
 
 select
     cast(null as {{dbt.type_int()}}) as entr_tag_id,
+    cast(null as {{dbt.type_int()}}) as tag_subtype_id,
     cast(null as {{dbt.type_string()}}) as entr_tag_name,
+    cast(null as {{dbt.type_string()}}) as tag_subtype_description,
     cast(null as {{dbt.type_string()}}) as logical_node,
     cast(null as {{dbt.type_string()}}) as sensor_name,
     cast(null as {{dbt.type_string()}}) as presentation_name,
