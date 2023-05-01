@@ -2,22 +2,15 @@
 version: 2
 
 jobs:
-  build:
+  build-postgres:
     docker:
       - image: cimg/python:3.9.9
       - image: circleci/postgres:9.6.5-alpine-ram
 
     steps:
       - checkout
-
-      - run:
-          run: setup_creds
-          command: |
-            echo $BIGQUERY_SERVICE_ACCOUNT_JSON > ${HOME}/bigquery-service-key.json
-
       - restore_cache:
-          key: deps1-{{ .Branch }}
-
+          key: deps_postgres-{{ .Branch }}
       - run:
           name: "Set Up dbt"
           # dbt-redshift 
@@ -25,10 +18,9 @@ jobs:
             python3 -m venv dbt_venv
             . dbt_venv/bin/activate
             pip install --upgrade pip setuptools
-            pip install --pre dbt-core dbt-postgres dbt-snowflake dbt-bigquery
+            pip install --pre dbt-postgres
             mkdir -p ~/.dbt
             cp integration_tests/ci/sample.profiles.yml ~/.dbt/profiles.yml
-
       - run:
           name: "Run Tests - Postgres"
           environment:
@@ -44,19 +36,31 @@ jobs:
             dbt --warn-error seed --target postgres --full-refresh
             dbt --warn-error run --target postgres --full-refresh
             dbt --warn-error test --target postgres
+      - save_cache:
+          key: deps_postgres-{{ .Branch }}
+          paths:
+            - "dbt_venv"
+      - store_artifacts:
+          path: ./logs
 
-      # - run:
-      #     name: "Run Tests - Redshift"
-      #     command: |
-      #       . dbt_venv/bin/activate
-      #       echo `pwd`
-      #       cd integration_tests
-      #       dbt --warn-error deps --target redshift
-      #       dbt --warn-error seed --target redshift --full-refresh
-      #       dbt --warn-error run --target redshift --full-refresh --vars 'update: false'
-      #       dbt --warn-error run --target redshift --vars 'update: true'
-      #       dbt --warn-error test --target redshift
 
+  build-snowflake:
+    docker:
+      - image: cimg/python:3.9.9
+
+    steps:
+      - checkout
+      - restore_cache:
+          key: deps_snowflake-{{ .Branch }}
+      - run:
+          name: "Set Up dbt"
+          command: |
+            python3 -m venv dbt_venv
+            . dbt_venv/bin/activate
+            pip install --upgrade pip setuptools
+            pip install --pre dbt-snowflake
+            mkdir -p ~/.dbt
+            cp integration_tests/ci/sample.profiles.yml ~/.dbt/profiles.yml
       - run:
           name: "Run Tests - Snowflake"
           command: |
@@ -67,7 +71,36 @@ jobs:
             dbt --warn-error seed --target snowflake --full-refresh
             dbt --warn-error run --target snowflake --full-refresh
             dbt --warn-error test --target snowflake
+      - save_cache:
+          key: deps_snowflake-{{ .Branch }}
+          paths:
+            - "dbt_venv"
+      - store_artifacts:
+          path: ./logs
 
+
+  build-bigquery:
+    docker:
+      - image: cimg/python:3.9.9
+    
+    steps:
+      - checkout
+      - run:
+          run: setup_creds
+          command: |
+            echo $BIGQUERY_SERVICE_ACCOUNT_JSON > ${HOME}/bigquery-service-key.json
+      - restore_cache:
+          key: deps_bigquery-{{ .Branch }}
+      - run:
+          name: "Set Up dbt"
+          # dbt-redshift 
+          command: |
+            python3 -m venv dbt_venv
+            . dbt_venv/bin/activate
+            pip install --upgrade pip setuptools
+            pip install --pre dbt-bigquery
+            mkdir -p ~/.dbt
+            cp integration_tests/ci/sample.profiles.yml ~/.dbt/profiles.yml
       - run:
           name: "Run Tests - BigQuery"
           environment:
@@ -80,14 +113,13 @@ jobs:
             dbt --warn-error seed --target bigquery --full-refresh
             dbt --warn-error run --target bigquery --full-refresh
             dbt --warn-error test --target bigquery
-
       - save_cache:
-          key: deps1-{{ .Branch }}
+          key: deps_bigquery-{{ .Branch }}
           paths:
             - "dbt_venv"
-
       - store_artifacts:
           path: ./logs
+
 
   build-spark:
     docker:
@@ -114,11 +146,11 @@ jobs:
 
     steps:
       - checkout
-
+      - restore_cache:
+          key: deps_spark-{{ .Branch }}
       - run:
           name: Wait for Spark-Thrift
           command: dockerize -wait tcp://localhost:10000 -timeout 15m -wait-retry-interval 5s
-
       - run:
           name: "Set Up dbt"
           # dbt-redshift 
@@ -131,7 +163,6 @@ jobs:
             pip install dbt-spark[PyHive]
             mkdir -p ~/.dbt
             cp integration_tests/ci/sample.profiles.yml ~/.dbt/profiles.yml
-
       - run:
           name: "Run Tests - Spark"
           environment:
@@ -145,19 +176,35 @@ jobs:
             dbt --warn-error seed --target spark --full-refresh
             dbt --warn-error run --target spark --full-refresh
             dbt --warn-error test --target spark
-
+      - save_cache:
+          key: deps_spark-{{ .Branch }}
+          paths:
+            - "dbt_venv"
       - store_artifacts:
           path: ./logs
+
+      # - run:
+      #     name: "Run Tests - Redshift"
+      #     command: |
+      #       . dbt_venv/bin/activate
+      #       echo `pwd`
+      #       cd integration_tests
+      #       dbt --warn-error deps --target redshift
+      #       dbt --warn-error seed --target redshift --full-refresh
+      #       dbt --warn-error run --target redshift --full-refresh --vars 'update: false'
+      #       dbt --warn-error run --target redshift --vars 'update: true'
+      #       dbt --warn-error test --target redshift
 
 workflows:
   version: 2
   test-all:
     jobs:
-      - build:
+      - build-postgres
+      - build-snowflake:
           context:
             - profile-snowflake
+      - build-bigquery:
+          context:
             - profile-bigquery
-          #   - profile-redshift
-
       - build-spark
 
