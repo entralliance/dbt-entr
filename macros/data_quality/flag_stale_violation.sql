@@ -22,12 +22,12 @@
 
     {% set _stale_condition %}
         {% if partition_by_cols is defined %} 
-            {{ _target_col }} = lag( {{ _target_col }}, {{ lag_length }} ) over ( partition by {{ jinja_list_to_sql(partition_by_cols, quote_identifiers=quote )}} order by {{ _datetime_col }})
+            {{ _target_col }} = lag( {{ _target_col }}, {{ lag_length }} ) over ( partition by {{ entr.jinja_list_to_sql(partition_by_cols, quote_identifiers=quote )}} order by {{ _datetime_col }})
         {%- else -%}
             {{ _target_col }} = lag( {{ _target_col }}, {{ lag_length }} ) over ( order by {{ _datetime_col }})
         {% endif %}
         {% if exclude_values|length > 0 %} 
-            and {{ _target_col }} not in ({{ jinja_list_to_sql(exclude_values) }})
+            and {{ _target_col }} not in ({{ entr.jinja_list_to_sql(exclude_values) }})
         {% endif %}
     {% endset %}
 

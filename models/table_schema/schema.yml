@@ -3,5 +3,3 @@ version: 2
 models:
   - name: int_fct_entr_time_series__structured
     description: 0-row table containing structure for the standard ENTR time series data fact table
-    meta:
-      entr_table: fct_entr_time_series_data
