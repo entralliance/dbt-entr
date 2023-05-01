@@ -6,8 +6,8 @@
 
 
 select * from
-{{dbt_utils.union_relations(
+({{dbt_utils.union_relations(
     relations=relations,
     include=dbt_utils.get_filtered_columns_in_relation(ref('int_fct_entr_time_series__structured')),
-    column_override=get_entr_column_types()
-)}}
+    column_override=entr.get_entr_column_types()
+)}}) union_subquery

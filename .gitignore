@@ -6,3 +6,8 @@ target/
 dbt_modules/
 logs/
 dbt_packages/
+
+integration_tests/.env/snowflake.env
+integration_tests/.env/redshift.env
+integration_tests/.env/postgres.env
+integration_tests/.env/bigquery.env

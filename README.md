@@ -1,5 +1,17 @@
 # dbt-entr
-The ENTR Alliance's dbt package for standardized warehouse transformations in the renewable energy industry
+The ENTR Foundation's dbt package for standardized warehouse transformations in the renewable energy industry
+
+
+## Data Warehouse Compatibility
+
+This package has been tested for compatibility with the following warehouse types:
+
+* [x] **Postgres**  ![](https://raw.githubusercontent.com/elementary-data/elementary/master/static/postgres-16.png)
+* [x] **Snowflake** ![](https://raw.githubusercontent.com/elementary-data/elementary/master/static/snowflake-16.png) 
+* [x] **BigQuery**  ![](https://raw.githubusercontent.com/elementary-data/elementary/master/static/bigquery-16.svg) 
+* [x] **Spark/Databricks**  ![](https://raw.githubusercontent.com/elementary-data/elementary/master/static/databricks-16.png)
+
+Note: this package may work with other warehouse types not listed above but their compatibility has not been tested.
 
 ## Configuration
 
