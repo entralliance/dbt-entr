@@ -2,6 +2,7 @@
 version: 2
 
 jobs:
+
   build-postgres:
     docker:
       - image: cimg/python:3.9.9
@@ -13,7 +14,6 @@ jobs:
           key: deps_postgres-{{ .Branch }}
       - run:
           name: "Set Up dbt"
-          # dbt-redshift 
           command: |
             python3 -m venv dbt_venv
             . dbt_venv/bin/activate
@@ -93,7 +93,6 @@ jobs:
           key: deps_bigquery-{{ .Branch }}
       - run:
           name: "Set Up dbt"
-          # dbt-redshift 
           command: |
             python3 -m venv dbt_venv
             . dbt_venv/bin/activate
@@ -153,7 +152,6 @@ jobs:
           command: dockerize -wait tcp://localhost:10000 -timeout 15m -wait-retry-interval 5s
       - run:
           name: "Set Up dbt"
-          # dbt-redshift 
           command: |
             sudo apt-get update
             sudo apt-get install libsasl2-dev gcc
@@ -207,4 +205,3 @@ workflows:
           context:
             - profile-bigquery
       - build-spark
-
