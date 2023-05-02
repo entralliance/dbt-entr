@@ -195,7 +195,7 @@ jobs:
 
 workflows:
   version: 2
-  warehouse-integration-tests:
+  dbt-entr-integration-tests:
     jobs:
       - integration-postgres
       - integration-snowflake:
