@@ -14,7 +14,7 @@ permissions:
 env:
   POSTGRES_TEST_HOST: localhost
   POSTGRES_TEST_USER: postgres
-  POSTGRES_TEST_PASS: ''
+  POSTGRES_TEST_PASS: dbtdocs
   POSTGRES_TEST_PORT: 5432
   POSTGRES_TEST_DBNAME: entr
 
