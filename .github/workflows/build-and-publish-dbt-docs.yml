@@ -50,4 +50,4 @@ jobs:
         id: deployment
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: target
+          folder: integration_tests/target
