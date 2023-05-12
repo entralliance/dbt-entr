@@ -46,6 +46,12 @@ jobs:
           dbt deps --profile integration_tests --target docs
           dbt docs generate --profile integration_tests --target docs
       
+      - name: Set Up Pages
+        uses: actions/configure-pages@v2
+    
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v1
+      
       - name: Deploy to GitHub Pages
         id: deployment
         uses: JamesIves/github-pages-deploy-action@v4
