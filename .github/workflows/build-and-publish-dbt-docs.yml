@@ -12,6 +12,7 @@ permissions:
   contents: write
 
 env:
+  DBT_PROFILES_DIR: ${{ github.workspace }}/integration_test_project
   POSTGRES_TEST_HOST: localhost
   POSTGRES_TEST_USER: entr
   POSTGRES_TEST_PASS: dbtdocs
@@ -22,7 +23,7 @@ jobs:
   generate-dbt-docs:
     name: Generate dbt docs
     runs-on: ubuntu-latest
-    # concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
+    concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
 
     environment:
       name: github-pages
@@ -46,6 +47,7 @@ jobs:
           dbt deps --target docs
           dbt docs generate --target docs
 
+      
       - name: Deploy to GitHub Pages
         id: deployment
         uses: JamesIves/github-pages-deploy-action@v4
