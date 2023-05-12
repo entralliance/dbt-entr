@@ -36,7 +36,7 @@ jobs:
         run: docker run -e POSTGRES_PASSWORD=${{ env.POSTGRES_TEST_PASS }} -p 5432:5432 -d postgres:alpine
 
       - name: Install Python packages
-        run: python -m pip install dbt-postgres==$(yq eval '.require-dbt-version' dbt_project.yml)
+        run: python -m pip install dbt-postgres$(yq eval '.require-dbt-version' dbt_project.yml | awk -F'"' '{print $2","$4;}')
 
       - name: Test connection, install packages, and generate docs_project
         run: |
