@@ -13,7 +13,7 @@ permissions:
 
 env:
   POSTGRES_TEST_HOST: localhost
-  POSTGRES_TEST_USER: postgres
+  POSTGRES_TEST_USER: entr
   POSTGRES_TEST_PASS: dbtdocs
   POSTGRES_TEST_PORT: 5432
   POSTGRES_TEST_DBNAME: entr
@@ -33,7 +33,7 @@ jobs:
         uses: actions/checkout@v3
       
       - name: Start postgres
-        run: docker run -e POSTGRES_PASSWORD=${{ env.POSTGRES_TEST_PASS }} -p 5432:5432 -d postgres:alpine
+        run: docker run -e POSTGRES_USER=${{ env.POSTGRES_TEST_USER }} POSTGRES_PASSWORD=${{ env.POSTGRES_TEST_PASS }} -p 5432:5432 -d postgres:alpine
 
       - name: Install Python packages
         run: python -m pip install dbt-postgres$(yq eval '.require-dbt-version' dbt_project.yml | awk -F'"' '{print $2","$4;}')
