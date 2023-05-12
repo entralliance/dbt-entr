@@ -42,10 +42,9 @@ jobs:
       - name: Test connection, install packages, and generate docs_project
         run: |
           cp integration_tests/ci/sample.profiles.yml integration_tests/profiles.yml
-          dbt debug --target docs
-          dbt deps --target docs
-          dbt docs generate --target docs
-
+          dbt debug --profile integration_tests --target docs
+          dbt deps --profile integration_tests --target docs
+          dbt docs generate --profile integration_tests --target docs
       
       - name: Deploy to GitHub Pages
         id: deployment
