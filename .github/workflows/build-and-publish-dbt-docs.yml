@@ -51,9 +51,9 @@ jobs:
     
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v1
+        with:
+          path: 'target'
       
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: target
+        uses: actions/deploy-pages@v1
