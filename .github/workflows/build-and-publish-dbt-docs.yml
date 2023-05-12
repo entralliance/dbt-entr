@@ -12,7 +12,7 @@ permissions:
   contents: write
 
 env:
-  DBT_PROFILES_DIR: ${{ github.workspace }}/integration_test_project
+  DBT_PROFILES_DIR: ${{ github.workspace }}/integration_tests
   POSTGRES_TEST_HOST: localhost
   POSTGRES_TEST_USER: entr
   POSTGRES_TEST_PASS: dbtdocs
@@ -41,8 +41,7 @@ jobs:
 
       - name: Test connection, install packages, and generate docs_project
         run: |
-          cd integration_tests
-          cp ci/sample.profiles.yml profiles.yml
+          cp integration_tests/ci/sample.profiles.yml integration_tests/profiles.yml
           dbt debug --target docs
           dbt deps --target docs
           dbt docs generate --target docs
@@ -52,4 +51,4 @@ jobs:
         id: deployment
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: integration_tests/target
+          folder: target
