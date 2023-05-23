@@ -197,6 +197,8 @@ workflows:
   version: 2
   dbt-entr-integration-tests:
     jobs:
+      - hold:
+          type: approval
       - integration-postgres
       - integration-snowflake:
           context: profile-snowflake
