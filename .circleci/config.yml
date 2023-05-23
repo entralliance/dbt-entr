@@ -199,9 +199,10 @@ workflows:
     jobs:
       - integration-postgres
       - integration-snowflake:
-          context:
-            - profile-snowflake
+          context: profile-snowflake
+          requires: integration-postgres
       - integration-bigquery:
-          context:
-            - profile-bigquery
+          context: profile-bigquery
+          requires: integration-postgres
       - integration-spark
+          requires: integration-postgres
