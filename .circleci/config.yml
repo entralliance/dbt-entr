@@ -200,12 +200,16 @@ workflows:
       - hold:
           type: approval
       - integration-postgres:
-          requires: hold
+          requires:
+            - hold
       - integration-snowflake:
           context: profile-snowflake
-          requires: integration-postgres
+          requires:
+            - integration-postgres
       - integration-bigquery:
           context: profile-bigquery
-          requires: integration-postgres
+          requires:
+            - integration-postgres
       - integration-spark:
-          requires: integration-postgres
+          requires:
+            - integration-postgres
