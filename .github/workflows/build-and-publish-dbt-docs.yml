@@ -1,10 +1,8 @@
-name: Publish dbt Documentation
+name: build-and-publish-dbt-docs
 
 # See https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#release
 on:
   workflow_dispatch:
-  release:
-    types: [published]
   push:
     branches: [main]
 
