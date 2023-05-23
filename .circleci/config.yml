@@ -86,6 +86,7 @@ jobs:
       - store_artifacts:
           path: ./logs
 
+
   integration-snowflake:
     docker:
       - image: cimg/python:3.9.9
