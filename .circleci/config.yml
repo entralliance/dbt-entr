@@ -207,5 +207,5 @@ workflows:
       - integration-bigquery:
           context: profile-bigquery
           requires: integration-postgres
-      - integration-spark
+      - integration-spark:
           requires: integration-postgres
