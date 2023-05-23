@@ -205,11 +205,11 @@ workflows:
       - integration-snowflake:
           context: profile-snowflake
           requires:
-            - integration-postgres
+            - hold
       - integration-bigquery:
           context: profile-bigquery
           requires:
-            - integration-postgres
+            - hold
       - integration-spark:
           requires:
-            - integration-postgres
+            - hold
