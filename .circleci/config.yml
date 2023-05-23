@@ -199,7 +199,8 @@ workflows:
     jobs:
       - hold:
           type: approval
-      - integration-postgres
+      - integration-postgres:
+          requires: hold
       - integration-snowflake:
           context: profile-snowflake
           requires: integration-postgres
