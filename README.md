@@ -1,7 +1,7 @@
 <h1 align="center">dbt-entr</h1>
 <p align="center">
-<img alt="dbt-logo" width="20%" src="https://github.com/entralliance/entralliance.github.io/raw/main/images/dbt-logo.png" />
-<img alt="logo" width="20%" src="https://raw.githubusercontent.com/entralliance/entralliance.github.io/main/images/entr-logo-grey.svg?format=1500w" />
+<img alt="dbt-logo" width="25%" src="https://github.com/entralliance/entralliance.github.io/raw/main/images/dbt-logo.png" />
+<img alt="logo" width="25%" src="https://raw.githubusercontent.com/entralliance/entralliance.github.io/main/images/entr-logo-grey.svg?format=1500w" />
 </p>
 
 <hr/>
