@@ -78,7 +78,7 @@ vars:
 
 You may also want to change the materialization type (or other properties such as the database or schema in which models are materialized) of the standard ENTR models, which can be done by specifying those materialization properties in your `dbt_project.yml`:
 
-```yml
+```yaml
 models:
     entr:
         +materialized: view
