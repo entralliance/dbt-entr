@@ -1,6 +1,7 @@
 <h1 align="center">dbt-entr</h1>
 <p align="center">
-<img alt="logo" width="20%" src="https://images.squarespace-cdn.com/content/v1/5d2f4cea430e880001ddfba8/1579219580580-2SAK7YKA6CX7P9VK57XT/ENTR+White+Logo_White.png?format=1500w" />
+<img alt="dbt-logo" width="10%" src="https://github.com/entralliance/entralliance.github.io/raw/main/images/dbt-logo.png" />
+<img alt="logo" width="10%" src="https://raw.githubusercontent.com/entralliance/entralliance.github.io/main/images/entr-logo-grey.svg?format=1500w" />
 </p>
 
 <hr/>
@@ -12,17 +13,17 @@
 <img alt="License" src="https://img.shields.io/badge/License-MIT-yellow.svg"/>
 </p>
 
-The ENTR Foundation's dbt package for standardized warehouse transformations in the renewable energy industry
+The ENTR Foundation's dbt package for standardized warehouse transformations for the renewable energy industry.
 
 
 ## Data Warehouse Compatibility
 
 This package has been tested for compatibility with the following warehouse types:
 
-* [x] **Postgres**  ![](https://raw.githubusercontent.com/elementary-data/elementary/master/static/postgres-16.png)
-* [x] **Snowflake** ![](https://raw.githubusercontent.com/elementary-data/elementary/master/static/snowflake-16.png) 
-* [x] **BigQuery**  ![](https://raw.githubusercontent.com/elementary-data/elementary/master/static/bigquery-16.svg) 
-* [x] **Spark/Databricks**  ![](https://raw.githubusercontent.com/elementary-data/elementary/master/static/databricks-16.png)
+* [x] **Postgres**  ![](https://raw.githubusercontent.com/entralliance/entralliance.github.io/main/images/postgres-icon.png)
+* [x] **Snowflake** ![](https://raw.githubusercontent.com/entralliance/entralliance.github.io/main/images/snowflake-icon.png) 
+* [x] **BigQuery**  ![](https://raw.githubusercontent.com/entralliance/entralliance.github.io/main/images/bigquery-icon.svg) 
+* [x] **Spark/Databricks**  ![](https://raw.githubusercontent.com/entralliance/entralliance.github.io/main/images/databricks-icon.png)
 
 *Note:* this package may work with other warehouse types not listed above but their compatibility has not been tested.
 
