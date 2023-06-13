@@ -50,8 +50,9 @@ vars:
 
 The models specified in these lists should contain fields of the same names as the standard ENTR models into which they will be fed.
 
-- the dimensional models, i.e. those specified in the `dim_entr_asset_models` list, must contain at least the 3 fields specified in the `dim_entr_asset` docs [here](https://entralliance.github.io/dbt-entr/#!/model/model.entr.dim_entr_asset), i.e. `ASSET_ID`, `ASSET_NAME`, and `ASSET_TYPE` - any other fields included in the upstream models will be appended to the `dim_entr_asset` model for flexible management of metadata
-- the fact models, i.e. those specified in the `fct_entr_time_series_models` list, should contain all of the fields specified in the `fct_entr_time_series` docs [here](https://entralliance.github.io/dbt-entr/#!/model/model.entr.fct_entr_time_series) - any additional columns will not cause an error but will be ignored
+- The dimensional models, i.e. those specified in the `dim_entr_asset_models` list, must contain at least the 3 fields specified in the `dim_entr_asset` docs [here](https://entralliance.github.io/dbt-entr/#!/model/model.entr.dim_entr_asset), i.e. `ASSET_ID`, `ASSET_NAME`, and `ASSET_TYPE` - any other fields included in the upstream models will be appended to the `dim_entr_asset` model for extensibility of metadata usage.
+
+- The fact models, i.e. those specified in the `fct_entr_time_series_models` list, should contain all of the fields specified in the `fct_entr_time_series` docs [here](https://entralliance.github.io/dbt-entr/#!/model/model.entr.fct_entr_time_series) - any additional columns will not cause an error but will be ignored.
 
 ### Overriding Default Column Types
 
