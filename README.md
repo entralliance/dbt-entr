@@ -28,9 +28,6 @@ This package provides an opinionated yet flexible approach to structuring and na
 
 *Note:* this package may work with other warehouse types not listed above but their compatibility has not been tested.
 
-## The Standard ENTR Models
-
-
 ## Installation
 
 To install this package, add it to your `packages.yml` file in your dbt project's root directory along with the desired package version:
