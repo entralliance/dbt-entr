@@ -23,10 +23,10 @@ This package provides an opinionated yet flexible approach to structuring and na
 
 `dbt-entr` has been tested for compatibility with the following warehouse types:
 
-* [x] **Postgres**  ![](https://raw.githubusercontent.com/entralliance/entralliance.github.io/main/images/postgres-icon.png)
-* [x] **Snowflake** ![](https://raw.githubusercontent.com/entralliance/entralliance.github.io/main/images/snowflake-icon.png) 
-* [x] **BigQuery**  ![](https://raw.githubusercontent.com/entralliance/entralliance.github.io/main/images/bigquery-icon.svg) 
-* [x] **Spark/Databricks**  ![](https://raw.githubusercontent.com/entralliance/entralliance.github.io/main/images/databricks-icon.png)
+* [x] **Postgres** <img alt="Postgres" src="https://raw.githubusercontent.com/entralliance/entralliance.github.io/main/images/postgres-icon.png" />
+* [x] **Snowflake** <img alt="Snowflake" src="https://raw.githubusercontent.com/entralliance/entralliance.github.io/main/images/snowflake-icon.png" />
+* [x] **BigQuery** <img alt="BigQuery" src="https://raw.githubusercontent.com/entralliance/entralliance.github.io/main/images/bigquery-icon.svg" /> 
+* [x] **Spark/Databricks** <img alt="Databricks" src="https://raw.githubusercontent.com/entralliance/entralliance.github.io/main/images/databricks-icon.png" />
 
 *Note:* this package may work with other warehouse types not listed above but their compatibility has not been tested.
 
